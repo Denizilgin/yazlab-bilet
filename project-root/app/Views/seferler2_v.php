@@ -49,9 +49,12 @@
 
     </div>
 	     <div style = "margin-top: 30px; text-align: center">
-	    <label for="start">Tarih Seçiniz</label>
+	    <label for="start">Gidiş Tarihi</label>
 
        <input type="date" id="start" name="trip-start" value="xxxx-03-20" min="2024-01-01" max="2024-12-31" />
+	   <br><br>
+	   <label for="start">Dönüş Tarihi</label>
+    <input type="date" id="start" name="trip-start" value="xxxx-03-20" min="2024-01-01" max="2024-12-31" />
         </div>
 		
 </div>
@@ -61,11 +64,11 @@
 
 	
     <script>
+		   var dateCounter = 1;
     function updateLink() {
         // Seçili değeri al
         var selectedValue = document.getElementById("destinationSelect").value;
         var selectedValue2 = document.getElementById("destinationSelect2").value;
-		var departureTime = document.querySelector('.screen-bus__start').textContent;
 
 
 		document.querySelector('.screen-bus__location-col:first-child').textContent = selectedValue;
@@ -73,7 +76,7 @@
 
         // Bağlantıyı güncelle
         var link = document.getElementById("seferLink");
-        link.href = "./seferdetay?i=" + selectedValue + "&j=" + selectedValue2 + "&time=" + departureTime;
+        link.href = "./seferdetay?i=" + selectedValue + "&j=" + selectedValue2;
     }
 
 
@@ -87,14 +90,6 @@
         document.getElementById("destinationSelect").addEventListener("change", updateLink);
     document.getElementById("destinationSelect2").addEventListener("change", updateLink);
     };
-
-	const urlParams = new URLSearchParams(window.location.search);
-
-// Retrieve the departure time
-const departureTime = urlParams.get('time');
-
-// Now, 'departureTime' contains the value (e.g., '13:40')
-console.log(departureTime);
 
 </script>
 
@@ -114,24 +109,6 @@ console.log(departureTime);
 							</div>
 
 
-<input type="checkbox" id="redirectCheckbox"> <label for="redirectCheckbox"><strong> GİDİŞ - DÖNÜŞ </strong></label>
-
-<script>
-	// Checkbox'un durumunu kontrol etmek için bir fonksiyon
-	function checkboxChanged() {
-		// Checkbox'un durumunu kontrol et
-		var checkbox = document.getElementById("redirectCheckbox");
-		
-		// Checkbox işaretlendiğinde
-		if (checkbox.checked) {
-			// Yeni sayfaya yönlendir
-			window.location.href = "seferler2";
-		}
-	}
-
-	// Checkbox durumu değiştiğinde checkboxChanged fonksiyonunu çağır
-	document.getElementById("redirectCheckbox").addEventListener("change", checkboxChanged);
-</script>
 
 						</form>
 					</div>
@@ -168,7 +145,7 @@ console.log(departureTime);
 								</div>
 								<div class="screen-bus__time-wrap">
 									<div class="screen-bus__time">
-										<div class="screen-bus__start" id = "kalkis">13:40</div>
+										<div class="screen-bus__start">13:40</div>
 										<div class="screen-bus__time-arrow-wrap">
 											<span class="screen-bus__time-arrow"></span>
 										</div>

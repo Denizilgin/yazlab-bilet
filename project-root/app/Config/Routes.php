@@ -8,3 +8,4 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Auth::index');
 $routes->get('/seferdetay', 'Seferdetay::index');
 $routes->get('/seferler', 'Seferler::index');
+$routes->get('/seferler2', 'Seferler2::index');

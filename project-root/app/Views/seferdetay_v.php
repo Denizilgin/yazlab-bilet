@@ -2,7 +2,14 @@
 <?php
 $sehir1 = $_GET['i'];
 $sehir2 = $_GET['j'];
+$saat = $_GET['time'];
 
+$selectedSeats = isset($_POST['selectedSeats']) ? $_POST['selectedSeats'] : '';
+$name = isset($_POST['name']) ? $_POST['name'] : '';
+$email = isset($_POST['email']) ? $_POST['email'] : '';
+$date = isset($_POST['date']) ? $_POST['date'] : '';
+$tc = isset($_POST['tc']) ? $_POST['tc'] : '';
+$cinsiyet = isset($_POST['gender']) ? $_POST['gender'] : '';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +18,8 @@ $sehir2 = $_GET['j'];
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Plane Seating</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBG6WqwDRZlw1Sn248f3yqKiHe339F6oTU&libraries=places" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link rel = "stylesheet" href = "<?php echo base_url('assets/bus/style.css');?>">
 
 </head>
@@ -97,6 +106,17 @@ $sehir2 = $_GET['j'];
     button:hover {
       background-color: #0056b3;
     }
+
+    #holder {
+      float: left;
+      margin-right: 20px;
+    }
+
+    #map {
+      height: 600px;
+      width: 600px;
+      float: left;
+    }
   
   </style>
 <body onload = "initMap()">
@@ -114,9 +134,8 @@ $sehir2 = $_GET['j'];
       <option type="hidden" value="<?php echo $sehir2; ?>"><?php echo $sehir2; ?></option>
       </select>
     </div>
-<button class = "btn btn-primary" onclick = "calcRoute()"> Rotayı Gör </button>
+    <?php echo $saat; ?>
 <br><br>
-<div id="map" style="height: 600px; width: 600px;"></div>
 
 
 
@@ -164,22 +183,66 @@ $sehir2 = $_GET['j'];
         })
       }
     </script>
-<h2> Choose seats by clicking the corresponding seat in the layout below:</h2>
-<div id="holder">
+
+<div class="row mb-3 text-center">
+      <div class="col-md-8 themed-grid-col">
+        <div class="pb-3">
+          
+        <h2 > Koltuk Seçiniz</h2>
+<div id="holder" style = "margin-left: 350px;" >
   <ul id="place">
   </ul>
 </div>
+        
 <div style="float:left;">
   <ul id="seatDescription">
-    <li><i class="fa fa-user" aria-hidden="true"></i> Available Seat</li>
-    <li><i class="fa fa-user" aria-hidden="true" style="color: red"></i>  Booked Seat</li>
-    <li><i class="fa fa-user" aria-hidden="true" style="color: green"></i>  Selected Seat</li>
+
   </ul>
 </div>
 <div style="clear:both;width:100%">
+<li style="color: red"> Dolu Koltuk</li>
+    <li style="color: green"> Seçilen Koltuk</li>
   <input type="button" id="btnShowNew" value="Show Selected Seats" />
   <input type="button" id="btnShow" value="Show All" />
 </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-6 themed-grid-col"><div>
+    <h2>Kişisel Bilgiler</h2>
+    <form action="" method="post">
+      <label for="name">Ad Soyad:</label>
+      <input type="text" id="name" name="name" value="<?php echo $name; ?>" required>
+
+      <label for="email">E-posta:</label>
+      <input type="email" id="email" name="email" value="<?php echo $email; ?>" required>
+
+      <label for="date">Doğum Tarihi</label>
+      <input type="date" id="date" name="date" value="<?php echo $date; ?>" required>
+
+      <label for="tc">TC Kimlik</label>
+      <input type="text" id="tc" name="tc" value="<?php echo $tc; ?>" required>
+
+      <label for="gender">Cinsiyet</label>
+<select id="gender" name="gender" required>
+    <option value="kadin" <?php echo ($cinsiyet === 'kadin') ? 'selected' : ''; ?>>Kadın</option>
+    <option value="erkek" <?php echo ($cinsiyet === 'erkek') ? 'selected' : ''; ?>>Erkek</option>
+</select>
+
+
+      <input type="hidden" id="selectedSeats" name="selectedSeats" value="">
+      <input type="submit" value="Bilgileri Kaydet">
+    </form>
+  </div></div>
+          <div class="col-md-6 themed-grid-col">.col-md-6</div>
+        </div>
+      </div>
+      <div class="col-md-4 themed-grid-col"><div id="map" style="height: 600px; width: 600px;"> </div>
+      <button class = "btn btn-primary" onclick = "calcRoute()"> Rotayı Gör </button>
+</div>
+    </div>
+
+
 
 
 
