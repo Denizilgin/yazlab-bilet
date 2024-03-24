@@ -28,7 +28,7 @@ class Database extends Config
         'DSN'          => '',
         'hostname'     => 'localhost',
         'username'     => 'root',
-        'password'     => 'Deniz123gs.',
+        'password'     => '',
         'database'     => 'umuttepe_turizm',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
