@@ -1,3 +1,5 @@
+
+
 <html>
 <head>
 <meta charset="UTF-8">
@@ -8,6 +10,8 @@
  
 </head>
     <body>
+
+	
     
 <div class="main">
 
@@ -49,12 +53,15 @@
 
     </div>
 	     <div style = "margin-top: 30px; text-align: center">
-	    <label for="start">Tarih Seçiniz</label>
+	    <label for="date">Tarih Seçiniz</label>
 
-       <input type="date" id="start" name="trip-start" value="xxxx-03-20" min="2024-01-01" max="2024-12-31" />
+       <input type="date" id="date" name="trip-start" value="xxxx-03-20" min="2024-01-01" max="2024-12-31" />
         </div>
 		
 </div>
+
+
+						
 
 <!-------------------------------------------------- SCRIPTLER -->
     
@@ -65,20 +72,18 @@
         // Seçili değeri al
         var selectedValue = document.getElementById("destinationSelect").value;
         var selectedValue2 = document.getElementById("destinationSelect2").value;
-		var departureTime = document.querySelector('.screen-bus__start').textContent;
-
+		var selectedDate = document.getElementById("date").value;
 
 		document.querySelector('.screen-bus__location-col:first-child').textContent = selectedValue;
         document.querySelector('.screen-bus__location-col:last-child').textContent = selectedValue2;
 
         // Bağlantıyı güncelle
         var link = document.getElementById("seferLink");
-        link.href = "./seferdetay?i=" + selectedValue + "&j=" + selectedValue2 + "&time=" + departureTime;
+        link.href = "./seferlistesi?i=" + selectedValue + "&j=" + selectedValue2 + "&date=" + selectedDate;
     }
 
 
 
-    // Sayfa yüklendiğinde çağrılacak fonksiyon
     window.onload = function () {
         // Bağlantıyı güncelle
         updateLink();
@@ -93,25 +98,29 @@
 // Retrieve the departure time
 const departureTime = urlParams.get('time');
 
-// Now, 'departureTime' contains the value (e.g., '13:40')
 console.log(departureTime);
 
 </script>
 
 
 <!------------------------------------------------ SCRIPTLER BİTİŞ -->
-							<div class="screen-home__submit-wrap">
-								<span class="line"></span>
-								<div class="screen-home__bus-page" id="buspage">
-									<div class="screen-home__inside-wave">
-										
-									</div>
-									<figure class="screen-home__bus-arrow-wrap">
-<!--                     <span class="screen-home__btn-blink"></span> -->
-										<img src="https://i.ibb.co/nQ4khG8/arrow.png">
-									</figure>
-								</div>
-							</div>
+<a id="seferLink" href='./seferdetay?i=' style = "text-decoration: none; color: inherit;">
+<div class="screen-home__submit-wrap" id = "seferler-buton"> 
+    <span class="line"></span>
+    <div class="screen-home__bus-page" id="buspage">
+        <div class="screen-home__inside-wave">
+            
+        </div>
+        <figure class="screen-home__bus-arrow-wrap">
+            <!-- <span class="screen-home__btn-blink"></span> -->
+        </figure>
+    </div>
+
+</div>
+</a>
+
+
+							
 
 
 <input type="checkbox" id="redirectCheckbox"> <label for="redirectCheckbox"><strong> GİDİŞ - DÖNÜŞ </strong></label>
@@ -159,16 +168,18 @@ console.log(departureTime);
 				</div>
 				<div class="screen-bus__travels-wrap">
 					<div class="screen-bus__travels-row">
+						<!--  OTOBÜS BAŞLANGIÇ -->
 						<div class="screen-bus__travels-col">
 						<a id="seferLink" href='./seferdetay?i=' style = "text-decoration: none; color: inherit;">
 							<div class="screen-bus__name-time-seat">
 								<div class="screen-bus__name-wrap">
 									<span class="screen-bus__name">KPN Travels</span>
-									<span class="screen-bus__type">Non A/C</span>
+									<span class="screen-bus__type" id = "plaka" >41BSM3406</span>
 								</div>
 								<div class="screen-bus__time-wrap">
 									<div class="screen-bus__time">
-										<div class="screen-bus__start" id = "kalkis">13:40</div>
+										<div class="screen-bus__start" id = "kalkis">13:40</div> <!-- VERİTABANINDAN ÇEKİLEN KALKIŞ SAATİ GELİCEK-->
+										<div class="screen-bus__start"></div>
 										<div class="screen-bus__time-arrow-wrap">
 											<span class="screen-bus__time-arrow"></span>
 										</div>
@@ -180,7 +191,7 @@ console.log(departureTime);
 								</div>
 								<div class="screen-bus__seat-wrap">
 									<div>
-										<span class="screen-bus__count">26</span>
+										<span class="screen-bus__count" id = "seat">26</span> <!-- VERİTABANINDAN ÇEKİLEN KOLTUK SAYISI GELİCEK-->
 										Seats Available
 									</div>
 								</div>
@@ -198,81 +209,13 @@ console.log(departureTime);
 										</ul>
 									</div>
 									<div class="screen-bus__price">
-										<span><span>&#8377;</span> 1220</span>
+										<span><span>₺</span> 1220</span>
 									</div>
 								</div>
 							</div>
+							</a>
 						</div>
-						</a>
-						<div class="screen-bus__travels-col">
-							<div class="screen-bus__name-time-seat">
-								<div class="screen-bus__name-wrap">
-									<span class="screen-bus__name">SRS Travels</span>
-									<span class="screen-bus__type">A/C Sleeper</span>
-								</div>
-								<div class="screen-bus__time-wrap">
-									<div class="screen-bus__time">
-										<div class="screen-bus__start">12:00</div>
-										<div class="screen-bus__time-arrow-wrap">
-											<span class="screen-bus__time-arrow"></span>
-										</div>
-										<div class="screen-bus__end">15:00</div>
-									</div>
-									<div class="screen-bus__hrs">
-										<span>3 hrs</span>
-									</div>
-								</div>
-								<div class="screen-bus__seat-wrap">
-									<div>
-										<span class="screen-bus__count">13</span>
-										Seats Available
-									</div>
-								</div>
-							</div>
-							<div class="screen-bus__rating-price">
-								<div class="screen-bus__rating-price-row">
-									<div class="screen-bus__rating">
-										<ul class="screen-bus__rating-row">
-											<li><figure><img src="https://i.ibb.co/pxtdTrM/star.png"></figure></li>
-											<li><figure><img src="https://i.ibb.co/pxtdTrM/star.png"></figure></li>
-											<li><figure><img src="https://i.ibb.co/pxtdTrM/star.png"></figure></li>
-											<li><figure><img src="https://i.ibb.co/WPLcC1D/star-grey.png"></figure></li>
-											<li><figure><img src="https://i.ibb.co/WPLcC1D/star-grey.png"></figure></li>
-										</ul>
-									</div>
-									<div class="screen-bus__price">
-										<span><span>&#8377;</span> 800</span>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="screen-bus__travels-col">
-							<div class="screen-bus__name-time-seat">
-								<div class="screen-bus__name-wrap">
-									<span class="screen-bus__name">Royal Travels</span>
-									<span class="screen-bus__type">A/C Sleeper</span>
-								</div>
-								<div class="screen-bus__time-wrap">
-									<div class="screen-bus__time">
-										<div class="screen-bus__start">22:00</div>
-										<div class="screen-bus__time-arrow-wrap">
-											<span class="screen-bus__time-arrow"></span>
-										</div>
-										<div class="screen-bus__end">1:00</div>
-									</div>
-									<div class="screen-bus__hrs">
-										<span>3 hrs</span>
-									</div>
-								</div>
-								<div class="screen-bus__seat-wrap">
-									<div>
-										<span class="screen-bus__count">20</span>
-										Seats Available
-									</div>
-								</div>
-							</div>
-				
-						
+						<!--  BİTİŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞŞ -->
 								</div>
 							</div>
 						</div>

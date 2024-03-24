@@ -424,3 +424,8 @@ body {
   margin-top: 20px;
   color: green;
 }
+
+button {
+  border: none;
+  outline: none;
+}

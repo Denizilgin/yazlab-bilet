@@ -9,3 +9,5 @@ $routes->get('/', 'Auth::index');
 $routes->get('/seferdetay', 'Seferdetay::index');
 $routes->get('/seferler', 'Seferler::index');
 $routes->get('/seferler2', 'Seferler2::index');
+$routes->get('/odeme', 'Odeme::index');
+$routes->get('/seferlistesi', 'Seferlistesi::index');
