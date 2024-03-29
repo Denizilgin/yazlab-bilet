@@ -1,6 +1,6 @@
 <?php
 $db = \Config\Database::connect(); // Veritabanı bağlantısını oluşturur
-
+$query = $db->query('SELECT * FROM  otobusler');
 
 
 if ($query) {
@@ -125,6 +125,7 @@ $data = [
     'KalkisNoktasi' => '$names[$i]',
     'VarisNoktasi' => 'değer2'
 ];
+$query = $db->table('otobusler')->insert($data);
 // Aldığınız verileri ekrana yazdırma
 
 ?>

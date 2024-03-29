@@ -3,7 +3,7 @@
 namespace Config;
 
 use CodeIgniter\Config\AutoloadConfig;
-$autoload['libraries'] = array('database');
+
 /**
  * -------------------------------------------------------------------
  * AUTOLOADER CONFIGURATION
@@ -22,7 +22,6 @@ $autoload['libraries'] = array('database');
  */
 class Autoload extends AutoloadConfig
 {
-    
     /**
      * -------------------------------------------------------------------
      * Namespaces

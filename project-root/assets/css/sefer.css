@@ -28,7 +28,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #009719;	
+  background: #eae7ce;	
 }
 .app {
 	width: 375px;
@@ -72,7 +72,7 @@ body {
 	font-family: roboto;
 }
 .inside-wrap {
-	background-color: #1adb00;
+	background-color: #e2ddae;
   /*padding: 10px 0px;*/
   position: relative;
   border-radius: 5px;
@@ -190,17 +190,18 @@ body {
 	padding: 0 15px;
 }
 .screen-home__submit-wrap .screen-home__bus-page {
-	background-color: #00bb38;
-  width: 46px;
-  height: 46px;
+	background-color:  #e2ddae;
+  width: 130px;
+  height: 36px;
   position: relative;
-  border-radius: 100px;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   outline: none;
   padding: 0;
   border: 3px solid #ffffff;
+  margin-top: 10px;
 }
 .screen-home__submit-wrap .screen-home__bus-page figure {
 	height: 26px;
@@ -212,13 +213,13 @@ body {
   justify-content: center;
   position: relative;
 }
-.line {
+/* .line {
 	position: absolute;
 	width: 100%;
 	height: 1px;
-	background-color: #00ff88;
+	background-color:  #a69d53;
 	z-index: -1;
-}
+} */
 
 
 .screen-home__recent-search {
@@ -408,7 +409,7 @@ body {
 }
 
 .inside-wrap select:hover {
-    background-color: #5493ec; /* Mouse üzerine gelindiğinde arkaplan rengi */
+    background-color: #ece2a292; /* Mouse üzerine gelindiğinde arkaplan rengi */
 }
 
 .inside-wrap select option {
@@ -428,4 +429,8 @@ body {
 button {
   border: none;
   outline: none;
+}
+
+#redirectCheckbox {
+ 
 }
